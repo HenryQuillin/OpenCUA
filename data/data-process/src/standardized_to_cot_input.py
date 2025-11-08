@@ -158,7 +158,6 @@ def process_file(
         "instruction": instruction,
         "traj": trajectory,
         "source_recording_id": data.get("example_id"),
-        "raw_type": data.get("type"),
         "image_folder": image_folder,
     }
 
