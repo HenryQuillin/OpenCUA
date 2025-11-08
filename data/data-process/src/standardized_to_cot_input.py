@@ -118,8 +118,10 @@ def process_file(
     content: list[dict] = data.get("content", [])
 
     instruction = resolve_instruction(content)
-    task_id = data.get("task_id") or data.get("example_id") or file_path.stem
-    example_id = data.get("example_id") or task_id
+    example_id = data.get("example_id") or file_path.stem
+    task_id = data.get("task_id") or ""
+    if not task_id or task_id.lower() == "agentnet":
+        task_id = example_id
     image_folder = sanitize_name(example_id)
 
     image_counter = 0
@@ -155,7 +157,7 @@ def process_file(
         "task_id": task_id,
         "instruction": instruction,
         "traj": trajectory,
-        "source_example_id": data.get("example_id"),
+        "source_recording_id": data.get("example_id"),
         "raw_type": data.get("type"),
         "image_folder": image_folder,
     }
