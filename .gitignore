@@ -29,3 +29,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+data/data-process/datasets/cot_images/
+.env
+data/data-process/datasets/
